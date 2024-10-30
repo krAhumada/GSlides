@@ -2,48 +2,47 @@
 
 require 'vendor/autoload.php';
 
-use GooglePresentation\GSlide;
+use GooglePresentation\GoogleClient;
+use GooglePresentation\DriveService;
+use GooglePresentation\SlidesService;
+use GooglePresentation\PresentationManager;
+use GooglePresentation\FileManager;
 
-$titlePresentacion = "presentation_" . date('Y-m-d_H:i:s') . "_" . time();
+/*
+Variables de ejemplo
+*/
 
-$subirTemplate = true;
-
+$filename = "template_" . date('Y-m-d_H:i:s') . ".pptx";
 $templateId = '1F1b5c8pKcjqPhH1sgFFkU3YWUg3HIYCTZ3Md0eKpNcE';
 $urlTemplate = __DIR__ . "/assets/templates_slides/plantillaBase.pptx";
 $urlTemplate = __DIR__ . "/assets/templates_slides/template_2.pptx";
+/***************************** */
 
-$client = new GSlide();
+// Configuración inicial
+$googleClient = new GoogleClient('client_secret_cuenta_servicio.json');
+$driveService = new DriveService($googleClient);
+$slidesService = new SlidesService($googleClient);
 
-$authentication = $client->auhtentication();
+$presentationManager = new PresentationManager($slidesService);
+$fileManager = new FileManager($driveService);
 
-// $client->deleteFilesAccountService($authentication['driveService']);
+$templateId = $fileManager->uploadFileTemplatePPT($urlTemplate, $filename, $templateId);
+$urlTemplateSlide = $fileManager->shareFile($templateId);
+$presentationId = $fileManager->copyTemplate($templateId);
+$urlPresentation = $fileManager->shareFile($presentationId);
 
-if ($subirTemplate) {
-
-    $templateId = $client->subirSlides($urlTemplate, $authentication['driveService'], $templateId);
-
-    $urlTemplateSlide = $client->compartirPresentation($templateId, $authentication['driveService']);
-
-    echo 'ID TEMPLATE: ' . $templateId . "\n";
-    echo 'Template url: ' . $urlTemplateSlide . "\n";
-}
-
-$presentationId = $client->copyTemplate($templateId, $authentication['driveService']);
-
-// $presentationId = $client->createPresentation($titlePresentacion, $authentication['slidesService']);
-
-$urlPresentation = $client->compartirPresentation($presentationId, $authentication['driveService']);
-
-$client->modifySlides(
+$presentationManager->modifySlides(
     $presentationId,
-    $authentication['slidesService'],
     [
-        '**title**' => 'esta es una titulo de prueba desde php 22',
-        '**subtitle**' => 'esta es un sub titulo de prueba desde php 22',
+        '**title**' => 'esta es una titulo de prueba desde php',
+        '**subtitle**' => 'esta es un sub titulo de prueba desde php',
         '**items3**' => 'esta es un sub titulo de prueba desde php',
     ]
 );
 
-echo "URL DEL SLIDES: " . $urlPresentation . "\n";
 
-$client->getFilesAccountService($authentication['driveService']);
+$fileManager->getFiles();
+
+echo 'ID TEMPLATE: ' . $templateId . "\n";
+echo 'Template url: ' . $urlTemplateSlide . "\n";
+echo "URL DEL SLIDES: " . $urlPresentation . "\n";
