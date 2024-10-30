@@ -1,0 +1,19 @@
+{
+    "name": "krAhumada/GSlides",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "GooglePresentation\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "KENNY AHUMADA",
+            "email": "73702136+krAhumada@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "google/apiclient": "^2.16",
+        "guzzlehttp/guzzle": "^7.9"
+    }
+}

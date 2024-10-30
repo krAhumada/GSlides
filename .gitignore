@@ -1,0 +1,38 @@
+# Configuración y credenciales
+client_secret_cuenta_servicio.json
+
+# Dependencias de Composer
+/vendor/
+/composer.lock
+
+# Archivos del entorno de desarrollo
+.env
+*.env.*
+
+# Archivos de caché y temporales
+/tmp/
+/*.cache
+*.log
+
+# Configuración de entorno local
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Archivos de sistema del editor y S.O.
+*.sublime*
+*.bak
+*.backup
+*.orig
+*.save
+
+# Archivos de compilación de PHPUnit
+.phpunit.result.cache
+
+# Archivos generados por herramientas de análisis
+.php_cs.cache
+
+# Archivos y configuraciones de despliegue (opcional)
+.env.local
