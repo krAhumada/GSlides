@@ -1,5 +1,5 @@
 {
-    "name": "krAhumada/GSlides",
+    "name": "krahumada/gslides",
     "type": "library",
     "autoload": {
         "psr-4": {

@@ -85,9 +85,6 @@ class GSlide
             ]);
         }
 
-        echo ($templateId) . "\n";
-        echo $file->getId() . "\n";
-
         if ($file->getId()) {
 
             // Actualizar el archivo existente
