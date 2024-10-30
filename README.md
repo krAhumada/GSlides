@@ -21,5 +21,5 @@ Google Presentation PHP Library es una librería que permite gestionar, crear y 
 
 1. **Clonar el repositorio** y navegar al directorio del proyecto.
    ```bash
-   git clone https://github.com/tuusuario/google-presentation-php-library.git
-   cd google-presentation-php-library
+   git clone https://github.com/krAhumada/GSlides.git
+   cd GSlides
