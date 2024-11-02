@@ -62,8 +62,6 @@ class FileManager
                         'uploadType' => 'multipart'
                     ]
                 );
-
-            echo "Archivo actualizado con ID: " . $result->getId() . "\n";
         } else {
 
             // Configuración del archivo para subir
