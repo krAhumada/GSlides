@@ -1,6 +1,7 @@
 {
     "name": "krahumada/gslides",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "GooglePresentation\\": "src/"
