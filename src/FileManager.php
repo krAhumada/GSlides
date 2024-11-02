@@ -136,30 +136,19 @@ class FileManager
         return $webViewLink;
     }
 
-    public function getFiles(): void
+    public function getFiles(): array
     {
-        // Listar archivos en Google Drive
-        try {
-            $response = $this->driveService->getDriveService()
-                ->files
-                ->listFiles([
-                    // 'pageSize' => 10, // Número de archivos a mostrar
-                    'fields' => 'nextPageToken, files(id, name, mimeType)', // Campos a obtener
-                ]);
 
-            $files = $response->getFiles();
+        $response = $this->driveService->getDriveService()
+            ->files
+            ->listFiles([
+                // 'pageSize' => 10, // Número de archivos a mostrar
+                'fields' => 'nextPageToken, files(id, name, mimeType)', // Campos a obtener
+            ]);
 
-            if (empty($files)) {
-                echo "No se encontraron archivos.\n";
-            } else {
-                echo "Archivos encontrados:\n";
-                foreach ($files as $key => $file) {
-                    echo $key . ". ID: {$file->id}, Nombre: {$file->name}, Tipo MIME: {$file->mimeType}\n";
-                }
-            }
-        } catch (Exception $e) {
-            die('Error al listar archivos: ' . $e->getMessage());
-        }
+        $files = $response->getFiles();
+
+        return $files;
     }
 
     public function deleteFiles(): void
