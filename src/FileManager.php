@@ -32,6 +32,8 @@ class FileManager
     public function uploadFileTemplatePPT(string $filePath, string $filename = null, string $templateId = null): string
     {
 
+        $file = '';
+
         if (!$filename) $filename = "template_" . date('Y-m-d_H:i:s') . ".pptx";
 
         if ($templateId) {
@@ -44,7 +46,7 @@ class FileManager
                 ]);
         }
 
-        if ($file->getId()) {
+        if (!empty($file) && $file->getId()) {
 
             // Actualizar el archivo existente
             $updateFile = new Drive\DriveFile();
