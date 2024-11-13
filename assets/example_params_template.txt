@@ -1,0 +1,80 @@
+[
+    "templateId" =>  ["text", "1F1b5c8pKcjqPhH1sgFFkU3YWUg3HIYCTZ3Md0eKpNcE"],
+    "codigo_de_cotizacion" =>  ["text", "2024-000123-TDACargo"],
+    "empresa_razon_social" =>  ["text", "TDA Cargo"],
+    "detalle_servicios" =>  [
+        "slide",
+        [
+            [
+                "listText",
+                [
+                    "modulo" =>  "Módulo Comercial",
+                    "decripcion" =>  "Proceso de Alta de Clientes"
+                ]
+            ],
+            [
+                "listText",
+                [
+                    "modulo" =>  "Módulo Administración",
+                    "decripcion" =>  "Gastos"
+                ]
+            ],
+        ]
+    ],
+    "servicios" =>  [
+        "slide",
+        [
+            [
+                "nombre" =>  ["text", "Implementación de Sistema CRM"],
+                "valor" =>  ["text", 1500],
+                "moneda" =>  ["text", "USD"],
+                "inclusiones" =>  [
+                    "list",
+                    [
+                        "Plataforma 24 x 7 en Google Cloud",
+                        "Soporte On Line"
+                    ]
+                ],
+                "condiciones_comerciales" =>  [
+                    "list",
+                    [
+                        "Contrato a 12 meses",
+                        "Pago al contado",
+                        "Emisión de factura el 15 de cada mes"
+                    ]
+                ],
+                "duracion_servicio" =>  ["text", "12 meses"],
+                "forma_facturacion" =>  [
+                    "list",
+                    [
+                        "50% de adelanto",
+                        "50% al término de la implementación"
+                    ]
+                ]
+            ],
+        ]
+    ],
+    "servicios_2" =>  [
+        "list",
+        [
+            "Contrato a 12 meses",
+            "Pago al contado",
+            "Emisión de factura el 15 de cada mes",
+            [
+                "50% de adelanto",
+                "50% al término de la implementación"
+                [
+                    "50% de adelanto",
+                    "50% al término de la implementación"
+                ]
+            ]
+        ]
+    ],
+    "detalle_servicios" =>  [
+        "text",
+        [
+            "modulo" =>  "Módulo Comercial",
+            "decripcion" =>  "Proceso de Alta de Clientes"
+        ]
+    ],
+]
