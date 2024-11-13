@@ -4,9 +4,10 @@ namespace GooglePresentation\strategy;
 
 use Exception;
 
-class ListTemplate implements TemplateInterface
+class ListElementStrategy implements ElementInterface
 {
-    public function template(string $key, $data): array
+
+    public function process(string $key, $data, ?string $slideId): array
     {
 
         if (!is_array($data)) throw new Exception('El dato para el tipo "List" debe ser un array.');
@@ -38,10 +39,18 @@ class ListTemplate implements TemplateInterface
 
         endforeach;
 
+        $valueInString = trim($valueInString);
+
+        $valueInString = str_replace("\n\n", "\n", $valueInString);
+
         $requests[] = [
             'replaceAllText' => [
-                'containsText' => ['text' => '{{' . $key . '}}', 'matchCase' => true],
-                'replaceText' => $valueInString
+                'containsText' => [
+                    'text' => '{{' . $key . '}}',
+                    'matchCase' => true
+                ],
+                'replaceText' => $valueInString,
+                'pageObjectIds' => $slideId ? ["$slideId"] : [],
             ]
         ];
 
